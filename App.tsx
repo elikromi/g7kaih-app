@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
@@ -92,7 +91,8 @@ const App: React.FC = () => {
           <p className="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-widest">Langkah-langkah:</p>
           <ol className="text-xs text-slate-600 space-y-2 list-decimal ml-4">
             <li>Buka dashboard Supabase.</li>
-            <li>Ke menu Settings > API.</li>
+            {/* Perbaikan di baris bawah ini: menggunakan &gt; */}
+            <li>Ke menu Settings &gt; API.</li>
             <li>Salin Project URL dan anon public key.</li>
             <li>Tempel ke file <code>lib/supabase.ts</code>.</li>
           </ol>
