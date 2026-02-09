@@ -79,7 +79,8 @@ export const DailyReportForm: React.FC<{ user: Profile }> = ({ user }) => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const payloads = Object.entries(reports).map(([habit_id, data]) => ({
+      // Added explicit casting to fix Property 'status'/'note' does not exist on type 'unknown'
+      const payloads = (Object.entries(reports) as [string, { status: boolean; note: string }][]).map(([habit_id, data]) => ({
         student_id: user.id,
         habit_id,
         date: today,
@@ -103,7 +104,8 @@ export const DailyReportForm: React.FC<{ user: Profile }> = ({ user }) => {
     }
   };
 
-  const completedCount = Object.values(reports).filter(r => r.status).length;
+  // Added explicit casting for Object.values to avoid 'unknown' type error
+  const completedCount = (Object.values(reports) as { status: boolean; note: string }[]).filter(r => r.status).length;
   const totalCount = habits.length || 1;
   const progressPercent = Math.round((completedCount / totalCount) * 100);
 

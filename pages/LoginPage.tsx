@@ -20,9 +20,12 @@ export const LoginPage: React.FC = () => {
       });
 
       if (error) throw error;
-      // App.tsx handles navigation via auth listener
     } catch (err: any) {
-      setError(err.message || 'Gagal masuk. Periksa kembali email dan password Anda.');
+      if (err.message === 'Failed to fetch') {
+        setError('Tidak dapat terhubung ke server. Periksa koneksi internet Anda.');
+      } else {
+        setError('Email atau password salah. Silakan coba lagi.');
+      }
     } finally {
       setLoading(false);
     }
@@ -37,7 +40,7 @@ export const LoginPage: React.FC = () => {
           <span className="text-blue-600 font-black text-2xl">7K</span>
         </div>
         <h1 className="text-white text-2xl font-bold text-center mb-2">Anak Indonesia Hebat</h1>
-        <p className="text-blue-100 text-sm text-center mb-8">Pelacakan Kebiasaan Baik Harian</p>
+        <p className="text-blue-100 text-sm text-center mb-8">Sistem Pelacakan Karakter Harian</p>
 
         <form onSubmit={handleLogin} className="w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl">
           <div className="space-y-4">
@@ -47,7 +50,7 @@ export const LoginPage: React.FC = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@sekolah.sch.id"
+                placeholder="nama@sekolah.sch.id"
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
                 required
               />
@@ -75,19 +78,19 @@ export const LoginPage: React.FC = () => {
               disabled={loading}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-200 transform transition active:scale-95 disabled:opacity-50"
             >
-              {loading ? 'Masuk...' : 'Masuk Sekarang'}
+              {loading ? 'Memverifikasi...' : 'Masuk ke Dashboard'}
             </button>
           </div>
 
           <div className="mt-8 pt-4 border-t border-slate-100 text-center">
-             <p className="text-[9px] text-slate-400 font-medium">Sistem Pelaporan Karakter Terpusat</p>
+             <p className="text-[9px] text-slate-400 font-medium italic">"Membangun disiplin, menciptakan masa depan unggul."</p>
           </div>
         </form>
       </div>
       
       <div className="p-6 text-center">
-        <p className="text-blue-200 text-[10px] font-medium tracking-wide">
-          7 KEBIASAAN BAIK • {currentYear}
+        <p className="text-blue-200 text-[10px] font-bold tracking-widest uppercase">
+          Indonesia Hebat • {currentYear}
         </p>
       </div>
     </div>

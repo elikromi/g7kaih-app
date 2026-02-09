@@ -32,7 +32,7 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user, onLogout }) => {
 
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
-  // Academic year calculation: if month is July (6) or later, it's currentYear/currentYear+1
+  // Academic year: Start of year is July (6)
   const academicYear = currentMonth >= 6 
     ? `${currentYear}/${currentYear + 1}` 
     : `${currentYear - 1}/${currentYear}`;
