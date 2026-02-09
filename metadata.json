@@ -1,0 +1,7 @@
+{
+  "name": "7 Kebiasaan Anak Indonesia Hebat",
+  "description": "Aplikasi pelacakan harian 7 kebiasaan baik untuk siswa di Indonesia dengan dukungan manajemen untuk wali kelas dan admin sekolah.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
